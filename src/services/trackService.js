@@ -26,8 +26,20 @@ const deleteTrack = async (id) => {
     }
 }
 
+const updateTrack = async (id) => {
+    try {
+        const url = `${BASE_URL}/tracks/${id}`
+        const response = await axios.put(url)
+        return response
+    }
+    catch (error) {
+        return error
+    }
+}
+
 
 export {
     create,
-    deleteTrack
+    deleteTrack,
+    updateTrack
 }

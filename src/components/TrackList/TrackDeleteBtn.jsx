@@ -1,10 +1,9 @@
 import React from "react";
 import { deleteTrack } from "../../services/trackService";
 
-const TrackDeleteBtn = ({TrackId, getAllTracks}) => {
-    console.log(TrackId)
+const TrackDeleteBtn = ({trackId, getAllTracks}) => {
     const handleDelete = async () => {
-       await deleteTrack(TrackId)
+       await deleteTrack(trackId)
        getAllTracks()
     }
     return (

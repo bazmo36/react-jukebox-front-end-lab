@@ -18,7 +18,7 @@ const App = () => {
   return (
     <>
       <h1>Welcom To The Tracks App!</h1>
-      <button onClick={handleShowFromClick}>Add A Track</button>
+      <button onClick={handleShowFromClick}>Add New Track</button>
      
       {
         formIsShown
