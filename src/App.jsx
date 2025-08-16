@@ -62,7 +62,7 @@ const App = () => {
               setNowPlaying={setNowPlaying}
             />
 
-            <NowPlaying track={nowPlaying} />
+            <NowPlaying track={nowPlaying} setNowPlaying={setNowPlaying} />
 
             </>
           )
