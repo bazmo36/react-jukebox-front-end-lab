@@ -5,10 +5,11 @@ import { ClipLoader } from "react-spinners";
 
 import TrackDeleteBtn from './TrackDeleteBtn';
 import TrackEditBtn from './TrackEditBtn';
+import TrackPlayBtn from './TrackPlayBtn';
 
 
-const TrackList = ({ setEditTrack, setFormIsShown, getAllTracks, tracks }) => {
-    
+const TrackList = ({ setEditTrack, setFormIsShown, getAllTracks, tracks, setNowPlaying }) => {
+
     return (
         <div>
             <ol>
@@ -19,6 +20,11 @@ const TrackList = ({ setEditTrack, setFormIsShown, getAllTracks, tracks }) => {
                             return (
                                 <div key={track._id}>
                                     <p>{track.title} - {track.artist}</p>
+
+                                    <TrackPlayBtn
+                                        track={track}
+                                        setNowPlaying={setNowPlaying}
+                                    />
 
                                     <TrackDeleteBtn trackId={track._id} getAllTracks={getAllTracks} />
                                     <TrackEditBtn

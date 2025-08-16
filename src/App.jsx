@@ -10,6 +10,7 @@ const App = () => {
   const [formIsShown, setFormIsShown] = useState(false)
   const [editTrack, setEditTrack] = useState(null)
   const [tracks, setTracks] = useState([])
+  const [nowPlaying, setNowPlaying] = useState(null)
 
   const getAllTracks = async () => {
     const url = `${import.meta.env.VITE_BACK_END_SERVER_URL}/tracks`
@@ -52,13 +53,20 @@ const App = () => {
           )
           :
           (
+            <>
             <TrackList
               setFormIsShown={setFormIsShown}
               setEditTrack={setEditTrack}
               tracks={tracks}
               getAllTracks={getAllTracks}
+              setNowPlaying={setNowPlaying}
             />
+
+            <NowPlaying track={nowPlaying} />
+
+            </>
           )
+
       }
 
     </>
