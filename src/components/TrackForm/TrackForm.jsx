@@ -29,13 +29,6 @@ const TrackForm = ({ setFormIsShown, editTrack, setEditTrack, getAllTracks  }) =
         setIsSubmitting(true)
 
 
-        //   const response = await create(formData)
-        //   console.log(response)
-        //   if(response.status===201){
-        //     setFormIsShown(false)
-        //   }
-        //   setIsSubmitting(false)
-
         try {
             let response
             if (editTrack) {
@@ -60,7 +53,7 @@ const TrackForm = ({ setFormIsShown, editTrack, setEditTrack, getAllTracks  }) =
 
 
     return (
-        <div>
+        <div className="track-form-container">
             <h1>{editTrack ? 'Edit Track' : 'Add Your Track!'}</h1>
             <form onSubmit={handleSubmit}>
 
@@ -88,13 +81,13 @@ const TrackForm = ({ setFormIsShown, editTrack, setEditTrack, getAllTracks  }) =
                     ?
                     <DotLoader />
                     :
-                    <>
+                    <div className="form-buttons">
                     <button type='submit'>Submit</button>
-                    <button onClick={() => {
+                    <button  className="cancel-btn" onClick={() => {
                         setFormIsShown(false)
                         setEditTrack(null)
                     }}> Cancel </button>
-                    </>
+                    </div>
                     
                 }
 

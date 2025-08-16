@@ -1,3 +1,4 @@
+import "./App.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import TrackForm from "./components/TrackForm/TrackForm";
@@ -34,42 +35,43 @@ const App = () => {
 
 
   return (
-    <>
-      <h1>Welcom To The Tracks App!</h1>
+    <div className="container">
       {!formIsShown && (
-        <button onClick={handleShowFromClick}>Add New Track</button>
+        <button className="add-track-button" onClick={handleShowFromClick}>Add New Track</button>
       )}
 
 
       {
         formIsShown ?
           (
-            <TrackForm
-              setFormIsShown={setFormIsShown}
-              editTrack={editTrack}
-              setEditTrack={setEditTrack}
-              getAllTracks={getAllTracks}
-            />
+            <div className="center-page">
+              <TrackForm
+                setFormIsShown={setFormIsShown}
+                editTrack={editTrack}
+                setEditTrack={setEditTrack}
+                getAllTracks={getAllTracks}
+              />
+            </div>
           )
           :
           (
             <>
-            <TrackList
-              setFormIsShown={setFormIsShown}
-              setEditTrack={setEditTrack}
-              tracks={tracks}
-              getAllTracks={getAllTracks}
-              setNowPlaying={setNowPlaying}
-            />
+              <TrackList
+                setFormIsShown={setFormIsShown}
+                setEditTrack={setEditTrack}
+                tracks={tracks}
+                getAllTracks={getAllTracks}
+                setNowPlaying={setNowPlaying}
+              />
 
-            <NowPlaying track={nowPlaying} setNowPlaying={setNowPlaying} />
+              <NowPlaying track={nowPlaying} setNowPlaying={setNowPlaying} />
 
             </>
           )
 
       }
 
-    </>
+    </div>
   )
 };
 

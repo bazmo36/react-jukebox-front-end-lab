@@ -1,42 +1,234 @@
-#root {
-  max-width: 1280px;
+body {
+  background-color: #1a1a1a;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.container {
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Track List Container */
+.track-list-container {
+  width: 100%;
   padding: 2rem;
+  background-color: #2c2c2c;
+  border-radius: 12px;
+  color: #ffffff;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.track-list-container h2 {
+  font-size: 2rem;
+  color: orange;
+  margin-bottom: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Flex layout for track cards */
+.track-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Individual Track Card */
+.track-card {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1 1 calc(33.33% - 40px); 
+  max-width: 300px;
+  min-width: 250px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease-in-out;
 }
 
-.card {
-  padding: 2em;
+.track-card:hover {
+  transform: translateY(-5px);
 }
 
-.read-the-docs {
-  color: #888;
+.track-card p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
+
+.track-card span {
+  color: orange;
+  font-weight: 500;
+}
+
+/* Button group inside cards */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.button-group button {
+  background-color: #111;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button-group button:hover {
+  background-color: #444;
+}
+
+/* Now Playing Section */
+.now-playing-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.now-playing-container h3 {
+  color: orange;
+  margin-bottom: 1rem;
+}
+
+.now-playing-container p {
+  margin: 0.5rem 0;
+}
+
+.now-playing-container button {
+  margin-top: 1rem;
+  background-color: #aa0000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.now-playing-container button:hover {
+  background-color: #cc0000;
+}
+
+/* Track Form (Add/Edit Form) */
+.track-form-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 100px;
+  background-color: #2c2c2c;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: stretch;
+}
+
+.track-form-container h2 {
+  color: orange;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* Form labels and inputs */
+.track-form-container label {
+  display: block;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.track-form-container input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 0.5rem;
+  background-color: #1c1c1c;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.track-form-container input:focus {
+  border-color: orange;
+  outline: none;
+}
+
+/* Buttons */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.form-buttons button {
+  flex: 1;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Submit Button */
+.form-buttons button[type="submit"] {
+  background-color: #111;
+  color: white;
+}
+
+.form-buttons button[type="submit"]:hover {
+  background-color: #444;
+}
+
+.form-buttons .cancel-btn {
+  background-color: #aa0000;
+  color: white;
+}
+
+.form-buttons .cancel-btn:hover {
+  background-color: #cc0000;
+}
+
+
+
+.add-track-button {
+  background-color: orange;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin: 20px;
+}
+
+.add-track-button:hover {
+  background-color: #ffaa00;
+}
+
+

@@ -4,10 +4,10 @@ const NowPlaying = ({ track, setNowPlaying }) => {
     if (!track) return null
 
     return (
-        <div>
+        <div className="now-playing-container">
             <h1>Now Playing</h1>
-            <p>Title: {track.title}</p>
-            <p>Artist: {track.artist}</p>
+            <p><strong>Title:</strong> {track.title}</p>
+            <p><strong>Artist:</strong> {track.artist}</p>
 
             <button onClick={() => {
                 setNowPlaying(null)

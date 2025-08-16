@@ -11,16 +11,18 @@ import TrackPlayBtn from './TrackPlayBtn';
 const TrackList = ({ setEditTrack, setFormIsShown, getAllTracks, tracks, setNowPlaying }) => {
 
     return (
-        <div>
-            <ol>
+        <div className="track-list-container">
+            <h2>Track List</h2>
+            <ol className="track-flex">
                 {
                     tracks.length
                         ?
                         tracks.map(track => {
                             return (
-                                <div key={track._id}>
-                                    <p>{track.title} - {track.artist}</p>
-
+                                <div key={track._id}  className="track-card">
+                                    <p>{track.title} by <span>{track.artist}</span></p>
+                                     
+                                     <div className="button-group">
                                     <TrackPlayBtn
                                         track={track}
                                         setNowPlaying={setNowPlaying}
@@ -32,6 +34,7 @@ const TrackList = ({ setEditTrack, setFormIsShown, getAllTracks, tracks, setNowP
                                         setEditTrack={setEditTrack}
                                         setFormIsShown={setFormIsShown}
                                     />
+                                    </div>
 
                                 </div>
 
