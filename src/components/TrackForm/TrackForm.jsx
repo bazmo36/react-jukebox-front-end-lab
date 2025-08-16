@@ -88,7 +88,14 @@ const TrackForm = ({ setFormIsShown, editTrack, setEditTrack, getAllTracks  }) =
                     ?
                     <DotLoader />
                     :
+                    <>
                     <button type='submit'>Submit</button>
+                    <button onClick={() => {
+                        setFormIsShown(false)
+                        setEditTrack(null)
+                    }}> Cancel </button>
+                    </>
+                    
                 }
 
 
