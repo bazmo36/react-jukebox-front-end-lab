@@ -1,66 +1,96 @@
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import { DotLoader } from 'react-spinners'
-import { create } from '../../services/trackService'
+import { create, updateTrack } from '../../services/trackService'
 
-const TrackForm = ({setFormIsShown}) => {
+const TrackForm = ({ setFormIsShown, editTrack, setEditTrack, getAllTracks  }) => {
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [formData,setFormData] = useState({
-        title:'',
-        artist:''
+    const [formData, setFormData] = useState({
+        title: '',
+        artist: ''
     })
-    
+
+    useEffect(() => {
+        if (editTrack) {
+            setFormData({
+                title: editTrack.title,
+                artist: editTrack.artist
+            })
+        }
+    }, [editTrack])
+
     const handleChange = (event) => {
-       setFormData({...formData,[event.target.name]: event.target.value})
+        setFormData({ ...formData, [event.target.name]: event.target.value })
     }
 
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
 
         if (isSubmitting) return
         setIsSubmitting(true)
 
-      
-      const response = await create(formData)
-      console.log(response)
-      if(response.status===201){
-        setFormIsShown(false)
-      }
-      setIsSubmitting(false)
+
+        //   const response = await create(formData)
+        //   console.log(response)
+        //   if(response.status===201){
+        //     setFormIsShown(false)
+        //   }
+        //   setIsSubmitting(false)
+
+        try {
+            let response
+            if (editTrack) {
+                response = await updateTrack(editTrack._id, formData)
+            } else {
+                response = await create(formData)
+            }
+
+            if (response.status === 200 || response.status === 201) {
+                await getAllTracks()
+                setFormIsShown(false)
+                setEditTrack(null)
+                
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+
+        setIsSubmitting(false);
     }
 
 
     return (
         <div>
-            <h1>Add Your Track!</h1>
+            <h1>{editTrack ? 'Edit Track' : 'Add Your Track!'}</h1>
             <form onSubmit={handleSubmit}>
 
                 <label htmlFor="title">Title:</label>
-               <input 
-               id="title"
-               name="title"
-               type="text"
-               onChange={handleChange}
-               value={formData.title}
-               /><br /><br />
+                <input
+                    id="title"
+                    name="title"
+                    type="text"
+                    onChange={handleChange}
+                    value={formData.title}
+                /><br /><br />
 
                 <label htmlFor="artist">Artist:</label>
-               <input 
-               id="artist"
-               name="artist"
-               type="text"
-               onChange={handleChange}
-               value={formData.artist}
+                <input
+                    id="artist"
+                    name="artist"
+                    type="text"
+                    onChange={handleChange}
+                    value={formData.artist}
                 /><br /><br />
 
 
-                
-                {isSubmitting 
-                ?
-                 <DotLoader />
-                 :
-                 <button type='submit'>Submit</button>
+
+                {isSubmitting
+                    ?
+                    <DotLoader />
+                    :
+                    <button type='submit'>Submit</button>
                 }
-                
+
 
             </form>
         </div>

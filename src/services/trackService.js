@@ -26,10 +26,10 @@ const deleteTrack = async (id) => {
     }
 }
 
-const updateTrack = async (id) => {
+const updateTrack = async (id, data) => {
     try {
         const url = `${BASE_URL}/tracks/${id}`
-        const response = await axios.put(url)
+        const response = await axios.put(url, data)
         return response
     }
     catch (error) {
